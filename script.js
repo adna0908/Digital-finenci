@@ -11,8 +11,21 @@ const balanceEl = document.getElementById("balance");
 const listEl = document.getElementById("list");
 const message = document.getElementById("message");
 
+const clearBtn = document.getElementById("clearBtn");
+
 if (addBtn) {
     addBtn.addEventListener("click", addTransaction);
+}
+
+if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+        if (confirm("Are you sure you want to delete all results?")) {
+            transactions = [];
+            localStorage.removeItem("transactions");
+            updateList();
+            updateDashboard();
+        }
+    });
 }
 
 updateList();
