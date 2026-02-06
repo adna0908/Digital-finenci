@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Finance Tracker</title>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a> |
+    <a href="report.html">Report</a> |
+    <a href="about.html">About</a>
+</nav>
+
+<h2>🏠 Home - Finance Dashboard</h2>
+
+<input type="text" id="desc" placeholder="Description">
+<input type="number" id="amount" placeholder="Amount">
+
+<select id="type">
+    <option value="">Select Type</option>
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+</select>
+
+<button id="addBtn">Add</button>
+
+<p id="message"></p>
+
+<h3>Summary</h3>
+<p>Income: <span id="income">$0</span></p>
+<p>Expense: <span id="expense">$0</span></p>
+<p>Balance: <span id="balance">$0</span></p>
+
+<h3>Transactions</h3>
+<ul id="list"></ul>
+
+<script src="script.js"></script>
+</body>
+</html>
