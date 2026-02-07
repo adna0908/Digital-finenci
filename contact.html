@@ -16,12 +16,43 @@
 <div class="container">
     <h2>Contact Us</h2>
 
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea placeholder="Your Message"></textarea>
+    <input type="text" id="contactName" placeholder="Your Name">
+    <input type="email" id="contactEmail" placeholder="Your Email">
+    <textarea id="contactMessage" placeholder="Your Message"></textarea>
 
-    <button>Send</button>
+    <button id="sendBtn">Send</button>
+
+    <p id="contactInfo"></p>
 </div>
+
+<script>
+const sendBtn = document.getElementById("sendBtn");
+
+if (sendBtn) {
+    sendBtn.addEventListener("click", () => {
+        const name = document.getElementById("contactName").value.trim();
+        const email = document.getElementById("contactEmail").value.trim();
+        const message = document.getElementById("contactMessage").value.trim();
+        const info = document.getElementById("contactInfo");
+
+        if (!name || !email || !message) {
+            info.textContent = "❌ Please fill all fields!";
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            info.textContent = "❌ Please enter a valid email!";
+            return;
+        }
+
+        info.textContent = "✅ Message sent successfully!";
+        document.getElementById("contactName").value = "";
+        document.getElementById("contactEmail").value = "";
+        document.getElementById("contactMessage").value = "";
+    });
+}
+</script>
 
 </body>
 </html>
