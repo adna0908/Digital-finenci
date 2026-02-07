@@ -19,11 +19,16 @@ if (addBtn) {
 
 if (clearBtn) {
     clearBtn.addEventListener("click", () => {
+        if (transactions.length === 0) {
+            if (message) message.textContent = "❌ No transactions to delete!";
+            return;
+        }
         if (confirm("Are you sure you want to delete all results?")) {
             transactions = [];
             localStorage.removeItem("transactions");
             updateList();
             updateDashboard();
+            if (message) message.textContent = "✅ All results deleted!";
         }
     });
 }
@@ -37,7 +42,7 @@ function addTransaction() {
     const type = typeInput.value;
 
     if (!desc || !amount || !type) {
-        message.textContent = "❌ All fields required!";
+        if (message) message.textContent = "❌ All fields required!";
         return;
     }
 
@@ -50,6 +55,7 @@ function addTransaction() {
 
     updateList();
     updateDashboard();
+    if (message) message.textContent = "✅ Transaction added!";
 }
 
 function updateList() {
